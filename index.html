@@ -219,6 +219,9 @@ body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--t
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
 input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.4); }
 </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 
@@ -1295,6 +1298,15 @@ function init() {
 }
 
 init();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js")
+      .then(r => console.log("SW registered:", r.scope))
+      .catch(e => console.log("SW error:", e));
+  });
+}
 </script>
 </body>
 </html>

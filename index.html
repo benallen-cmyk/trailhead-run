@@ -85,7 +85,7 @@ body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--t
 
 /* DAY SELECTOR */
 .day-selector { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
-.day-btn { flex: 1; min-width: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 11px; padding: 10px 4px; cursor: pointer; text-align: center; transition: all 0.2s; }
+.day-btn { flex: 1; min-width: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 11px; padding: 10px 4px; cursor: pointer; text-align: center; transition: all 0.2s; -webkit-appearance: none; touch-action: manipulation; }
 .day-btn.selected-easy { background: rgba(76,199,196,0.15); border-color: var(--accent); color: var(--accent); }
 .day-btn.selected-quality { background: rgba(215,136,60,0.15); border-color: var(--accent2); color: var(--accent2); }
 .day-btn.selected-long { background: rgba(214,196,68,0.15); border-color: var(--sand); color: var(--sand); }
@@ -381,38 +381,31 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
       </div>
       <div id="days-recommendation" class="info-box" style="margin-bottom:20px"></div>
       <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:24px" id="days-count-selector">
-        <div class="days-count-btn" onclick="selectDayCount(1)" data-count="1" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+        <button type="button" class="days-count-btn" onclick="selectDayCount(1)" data-count="1" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
           <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">1</div>
-          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">day</div>
-        </div>
-        <div class="days-count-btn" onclick="selectDayCount(2)" data-count="2" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">day</button>
+        <button type="button" class="days-count-btn" onclick="selectDayCount(2)" data-count="2" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
           <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">2</div>
-          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
-        </div>
-        <div class="days-count-btn" onclick="selectDayCount(3)" data-count="3" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</button>
+        <button type="button" class="days-count-btn" onclick="selectDayCount(3)" data-count="3" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
           <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">3</div>
-          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
-        </div>
-        <div class="days-count-btn" onclick="selectDayCount(4)" data-count="4" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</button>
+        <button type="button" class="days-count-btn" onclick="selectDayCount(4)" data-count="4" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
           <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">4</div>
-          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
-        </div>
-        <div class="days-count-btn" onclick="selectDayCount(5)" data-count="5" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</button>
+        <button type="button" class="days-count-btn" onclick="selectDayCount(5)" data-count="5" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
           <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">5</div>
-          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
-        </div>
-        <div class="days-count-btn" onclick="selectDayCount(6)" data-count="6" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</button>
+        <button type="button" class="days-count-btn" onclick="selectDayCount(6)" data-count="6" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
           <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">6</div>
-          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
-        </div>
-        <div class="days-count-btn" onclick="selectDayCount(7)" data-count="7" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</button>
+        <button type="button" class="days-count-btn" onclick="selectDayCount(7)" data-count="7" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
           <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">7</div>
-          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
-        </div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</button>
       </div>
       <div class="btn-row">
         <button class="btn-back" onclick="goStep(3)">&#8592;</button>
-        <button class="btn-primary" onclick="goStep(6)" style="flex:1">Next &#8594;</button>
+        <button class="btn-primary" onclick="goStep(5)" style="flex:1">Next &#8594;</button>
       </div>
     </div>
 
@@ -430,13 +423,13 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
         <div class="day-legend-item"><div class="day-legend-dot" style="background:var(--sand)"></div>Long run</div>
       </div>
       <div class="day-selector" id="day-selector">
-        <div class="day-btn" onclick="toggleDay(0)" id="day-0">MON</div>
-        <div class="day-btn" onclick="toggleDay(1)" id="day-1">TUE</div>
-        <div class="day-btn" onclick="toggleDay(2)" id="day-2">WED</div>
-        <div class="day-btn" onclick="toggleDay(3)" id="day-3">THU</div>
-        <div class="day-btn" onclick="toggleDay(4)" id="day-4">FRI</div>
-        <div class="day-btn" onclick="toggleDay(5)" id="day-5">SAT</div>
-        <div class="day-btn" onclick="toggleDay(6)" id="day-6">SUN</div>
+        <button type="button" class="day-btn" onclick="toggleDay(0)" id="day-0">MON</button>
+        <button type="button" class="day-btn" onclick="toggleDay(1)" id="day-1">TUE</button>
+        <button type="button" class="day-btn" onclick="toggleDay(2)" id="day-2">WED</button>
+        <button type="button" class="day-btn" onclick="toggleDay(3)" id="day-3">THU</button>
+        <button type="button" class="day-btn" onclick="toggleDay(4)" id="day-4">FRI</button>
+        <button type="button" class="day-btn" onclick="toggleDay(5)" id="day-5">SAT</button>
+        <button type="button" class="day-btn" onclick="toggleDay(6)" id="day-6">SUN</button>
       </div>
       <div id="day-assignment-status" class="info-box" style="display:none">
         <div class="info-text" id="day-status-text"></div>
@@ -738,6 +731,77 @@ let currentModalSession = null;
 // ============================================================
 // NAVIGATION
 // ============================================================
+
+// ---- DAYS PER WEEK ----
+const DAYS_RECOMMENDATIONS = {
+  "5K": { recommended: 3, note: "3 days is ideal for 5K training." },
+  "10K": { recommended: 3, note: "3-4 days works well for 10K training." },
+  "half": { recommended: 4, note: "4 days gives great half marathon results." },
+  "marathon": { recommended: 4, note: "4-5 days recommended for marathon training." },
+  "ultra": { recommended: 5, note: "5+ days needed to build ultra mileage safely." }
+};
+
+function renderDaysRecommendation() {
+  const rec = DAYS_RECOMMENDATIONS[setupData.raceType] || { recommended: 4, note: "4 days is a solid default." };
+  const el = document.getElementById("days-recommendation");
+  if (el) {
+    el.innerHTML = "<div class='info-text'><strong style='color:var(--accent)'>Recommended: " + rec.recommended + " days</strong><br>" + rec.note + "</div>";
+  }
+  document.querySelectorAll(".days-count-btn").forEach(function(btn) {
+    const count = parseInt(btn.getAttribute("data-count"));
+    if (count === rec.recommended) {
+      btn.style.borderColor = "var(--accent)";
+      btn.style.background = "rgba(76,199,196,0.12)";
+      btn.style.color = "var(--accent)";
+    } else {
+      btn.style.borderColor = "var(--border)";
+      btn.style.background = "var(--surface)";
+      btn.style.color = "var(--off-white)";
+    }
+  });
+  if (!setupData.daysPerWeek) {
+    selectDayCount(rec.recommended);
+  }
+}
+
+function selectDayCount(n) {
+  setupData.daysPerWeek = n;
+  const rec = DAYS_RECOMMENDATIONS[setupData.raceType] || { recommended: 4 };
+  document.querySelectorAll(".days-count-btn").forEach(function(btn) {
+    const count = parseInt(btn.getAttribute("data-count"));
+    const isRec = count === rec.recommended;
+    const isSel = count === n;
+    if (isSel) {
+      btn.style.borderColor = "var(--accent2)";
+      btn.style.background = "rgba(215,136,60,0.15)";
+      btn.style.color = "var(--accent2)";
+    } else if (isRec) {
+      btn.style.borderColor = "var(--accent)";
+      btn.style.background = "rgba(76,199,196,0.12)";
+      btn.style.color = "var(--accent)";
+    } else {
+      btn.style.borderColor = "var(--border)";
+      btn.style.background = "var(--surface)";
+      btn.style.color = "var(--off-white)";
+    }
+  });
+  updateDayLegend(n);
+  selectedDays = [];
+  renderDayButtons();
+}
+
+function updateDayLegend(n) {
+  const el = document.getElementById("days-count-legend");
+  if (!el) return;
+  const labels = ["","Long run only","Easy + Long","Easy + Quality + Long","2 Easy + Quality + Long","3 Easy + Quality + Long","4 Easy + Quality + Long","5 Easy + Quality + Long"];
+  el.textContent = n + " day" + (n > 1 ? "s" : "") + ": " + (labels[n] || "");
+}
+
+function updateDayAssignmentForCount(n) {
+  selectedDays = [];
+  renderDayButtons();
+}
+
 function showHome() {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-home').classList.add('active');
@@ -776,20 +840,23 @@ function renderDots() {
 }
 
 function goStep(n) {
-  // Validate current step before advancing
   if (n > currentStep) {
     const err = validateStep(currentStep);
     if (err) { showToast(err); return; }
   }
   currentStep = n;
-  document.querySelectorAll('.setup-step').forEach(s => s.classList.remove('active'));
-  document.getElementById('step-' + n).classList.add('active');
+  document.querySelectorAll(".setup-step").forEach(s => s.classList.remove("active"));
+  const stepEl = document.getElementById("step-" + n);
+  if (stepEl) stepEl.classList.add("active");
   renderDots();
-  if (n === 3) updateFitnessPreview();
-  if (n === 4) renderDaysRecommendation();
-  if (n === 5) { updateDayAssignmentForCount(setupData.daysPerWeek || 4); }
-  if (n === 6) renderPaceConfirm();
   window.scrollTo(0, 0);
+  if (n === 3) updateFitnessPreview();
+  if (n === 4) setTimeout(renderDaysRecommendation, 50);
+  if (n === 5) setTimeout(function() {
+    renderDayButtons();
+    updateDayLegend(setupData.daysPerWeek || 4);
+  }, 50);
+  if (n === 6) renderPaceConfirm();
 }
 
 function validateStep(n) {
@@ -823,25 +890,21 @@ function validateStep(n) {
     setupData.startWeeklyKm = wk;
   }
   if (n === 4) {
-    if (selectedDays.length !== 4) return 'Please select 4 days for your runs';
+    if (!setupData.daysPerWeek) return "Please select a number of days";
+    return null;
+  }
+  if (n === 5) {
+    const needed = setupData.daysPerWeek || 4;
+    if (selectedDays.length !== needed) return "Please select " + needed + " days for your runs";
     const sorted = [...selectedDays].sort((a,b) => a.dayIdx - b.dayIdx);
-    const qualDay = sorted.find(d => d.role === 'quality')?.dayIdx;
+    const qualDay = needed >= 3 ? sorted.find(d => d.role === 'quality')?.dayIdx : undefined;
     const longDay = sorted.find(d => d.role === 'long')?.dayIdx;
     if (qualDay !== undefined && longDay !== undefined) {
       const diff = (longDay - qualDay + 7) % 7;
       if (diff === 1) return 'Avoid scheduling quality the day before your long run (UESCA guideline). Please adjust.';
     }
     // Map to ordered [easy1, quality, easy2, long]
-    // Build preferredDays in role order
-    const roles = getDayRoles(setupData.daysPerWeek || 4);
-    setupData.preferredDays = roles.map(role => {
-      if (role === 'long') return longDay;
-      if (role === 'quality') return qualDay;
-      // For easy: take the next available easy day
-      const usedEasy = setupData.preferredDays ? setupData.preferredDays.filter((d,i) => roles[i] === 'easy') : [];
-      return sorted.find(d => d.role === 'easy' && !usedEasy.includes(d.dayIdx))?.dayIdx || 0;
-    });
-    // Simpler: just use sorted order
+    // Build preferredDays in day order
     setupData.preferredDays = sorted.map(d => d.dayIdx);
   }
   return null;
@@ -890,6 +953,7 @@ const DAY_ROLES = ['easy', 'quality', 'easy', 'long'];
 let dayRoleIdx = 0;
 
 function toggleDay(dayIdx) {
+  console.log("toggleDay called:", dayIdx);
   const n = setupData.daysPerWeek || 4;
   const roles = getDayRoles(n);
   const existing = selectedDays.findIndex(d => d.dayIdx === dayIdx);
@@ -913,9 +977,12 @@ function updateDayAssignmentForCount(n) {
 }
 
 function renderDayButtons() {
+  const n = setupData.daysPerWeek || 4;
+  const roles = getDayRoles(n);
   const days = ['MON','TUE','WED','THU','FRI','SAT','SUN'];
   days.forEach((d, i) => {
     const el = document.getElementById('day-' + i);
+    if (!el) return;
     const sel = selectedDays.find(s => s.dayIdx === i);
     el.className = 'day-btn';
     if (sel) {
@@ -931,9 +998,9 @@ function renderDayButtons() {
   const statusText = document.getElementById('day-status-text');
   if (selectedDays.length > 0) {
     status.style.display = 'block';
-    const remaining = 4 - selectedDays.length;
-    const nextRole = remaining > 0 ? DAY_ROLES[selectedDays.length] : null;
-    statusText.innerHTML = selectedDays.length + '/4 days selected.' + (nextRole ? ' Next: tap a day for your <strong style="color:var(--accent)">' + nextRole + '</strong> run.' : ' All 4 sessions assigned.');
+    const remaining = n - selectedDays.length;
+    const nextRole = remaining > 0 ? roles[selectedDays.length] : null;
+    statusText.innerHTML = selectedDays.length + '/' + n + ' days selected.' + (nextRole ? ' Next: tap a day for your <strong style="color:var(--accent)">' + nextRole + '</strong> run.' : ' All ' + n + ' sessions assigned.');
   } else {
     status.style.display = 'none';
   }
@@ -965,22 +1032,46 @@ function getPlanPhases(totalWeeks, raceType) {
   return { baseWeeks:bw, buildWeeks:blw, peakWeeks:pw, taperWeeks, totalWeeks };
 }
 
+function formatTime(totalSec) {
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = Math.round(totalSec % 60);
+  if (h > 0) return h + "h " + String(m).padStart(2,"0") + "m " + String(s).padStart(2,"0") + "s";
+  return m + ":" + String(s).padStart(2,"0");
+}
+
+function getRaceLabel(raceType) {
+  return { "5K":"5K", "10K":"10K", "half":"Half Marathon", "marathon":"Marathon", "ultra":"Ultra 50K" }[raceType] || "Race";
+}
+
+function getGoalTimeForRace(p, raceType) {
+  const dist = { "5K":5, "10K":10, "half":21.097, "marathon":42.195, "ultra":50 }[raceType] || 42.195;
+  const pace = { "5K":p.fiveK, "10K":p.tenK, "half":p.half, "marathon":p.marathon, "ultra":p.longRun }[raceType] || p.marathon;
+  return { time: Math.round(pace * dist), pace };
+}
+
 function renderPaceConfirm() {
-  const p = setupData.fitnessType === 'easy'
+  const p = setupData.fitnessType === "easy"
     ? derivePacesFromEasy(setupData.easyPaceSec)
     : derivePaces(setupData.recentDistKm, setupData.recentTimeSec);
   setupData.calculatedPaces = p;
 
-  const rows = [
-    ['Easy Run', p.easy], ['Long Run', p.longRun],
-    ['Tempo', p.tempo], ['Intervals', p.interval]
-  ];
-  const el = document.getElementById('pace-confirm-preview');
-  el.innerHTML = '<div class="pace-preview-title">Your Training Paces</div>' +
-    rows.map(([label, sec]) =>
-      '<div class="pace-row"><span class="pace-label">' + label + '</span><span class="pace-value">' + formatPace(sec) + '</span></div>'
-    ).join('') +
-    '<div class="pace-row" style="margin-top:4px;padding-top:12px;border-top:1px solid var(--border)"><span class="pace-label" style="color:var(--muted);font-size:12px">Predicted marathon</span><span class="pace-value" style="font-size:13px">' + formatPace(p.marathon) + '</span></div>';
+  const goal = getGoalTimeForRace(p, setupData.raceType);
+  const raceLabel = getRaceLabel(setupData.raceType);
+
+  const rows = [["Easy Run", p.easy], ["Long Run", p.longRun], ["Tempo", p.tempo], ["Intervals", p.interval]];
+  const el = document.getElementById("pace-confirm-preview");
+  el.innerHTML = "<div class='pace-preview-title'>Your Training Paces</div>" +
+    rows.map(function(r) {
+      return "<div class='pace-row'><span class='pace-label'>" + r[0] + "</span><span class='pace-value'>" + formatPace(r[1]) + "</span></div>";
+    }).join("") +
+    "<div class='pace-row' style='margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:block'>" +
+      "<div style='font-family:JetBrains Mono,monospace;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px'>Goal " + raceLabel + " Finish</div>" +
+      "<div style='display:flex;justify-content:space-between;align-items:center'>" +
+        "<span style='font-size:13px;color:var(--muted)'>Target pace: " + formatPace(goal.pace) + "</span>" +
+        "<span style='font-family:Bebas Neue,sans-serif;font-size:26px;color:var(--accent);letter-spacing:2px'>" + formatTime(goal.time) + "</span>" +
+      "</div>" +
+    "</div>";
 }
 
 function buildPlan() {

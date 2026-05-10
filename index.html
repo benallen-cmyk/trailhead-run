@@ -48,8 +48,9 @@ body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--t
 .home-nav-btn.c2:hover { border-color: var(--accent2); }
 .home-nav-btn.c3:hover { border-color: var(--sand); }
 .home-nav-btn:hover::before { opacity: 1; }
-.home-btn-title { font-family: "Bebas Neue", sans-serif; font-size: 24px; letter-spacing: 4px; line-height: 1; }
-.home-btn-sub { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; }
+.home-btn-left { text-align: left; width: 100%; }
+.home-btn-title { font-family: "Bebas Neue", sans-serif; font-size: 24px; letter-spacing: 4px; line-height: 1;  text-align: left; }
+.home-btn-sub { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--muted); letter-spacing: 1px; margin-top: 4px;  text-align: left; }
 .home-btn-arrow { font-size: 18px; color: var(--muted); }
 
 /* SETUP WIZARD */
@@ -252,15 +253,15 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
     <div class="home-tagline">UESCA-based training. Built for you.</div>
     <div class="home-nav-btns" id="home-nav-btns">
       <button class="home-nav-btn c1" onclick="showPage('plan')" id="home-btn-plan" style="display:none">
-        <div><div class="home-btn-title" style="color:var(--accent)">Training Plan</div><div class="home-btn-sub">View your schedule</div></div>
+        <div class="home-btn-left"><div class="home-btn-title" style="color:var(--accent)">Training Plan</div><div class="home-btn-sub">View your schedule</div></div>
         <div class="home-btn-arrow">&#8594;</div>
       </button>
       <button class="home-nav-btn c2" onclick="showPage('paces')" id="home-btn-paces" style="display:none">
-        <div><div class="home-btn-title" style="color:var(--accent2)">Pace Targets</div><div class="home-btn-sub">Adjust your zones</div></div>
+        <div class="home-btn-left"><div class="home-btn-title" style="color:var(--accent2)">Pace Targets</div><div class="home-btn-sub">Adjust your zones</div></div>
         <div class="home-btn-arrow">&#8594;</div>
       </button>
       <button class="home-nav-btn c3" onclick="showPage('setup')">
-        <div><div class="home-btn-title" style="color:var(--sand)">Create Plan</div><div class="home-btn-sub">Set up a new training block</div></div>
+        <div class="home-btn-left"><div class="home-btn-title" style="color:var(--sand)">Create Plan</div><div class="home-btn-sub">Set up a new training block</div></div>
         <div class="home-btn-arrow">&#8594;</div>
       </button>
     </div>
@@ -275,7 +276,7 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
     <!-- STEP 1: Race Selection -->
     <div class="setup-step active" id="step-1">
       <div class="setup-header">
-        <div class="setup-step-label">Step 1 of 5</div>
+        <div class="setup-step-label">Step 1 of 6</div>
         <div class="setup-title">What are you training for?</div>
         <div class="setup-sub">Select your goal race distance.</div>
       </div>
@@ -309,7 +310,7 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
     <!-- STEP 2: Race Date -->
     <div class="setup-step" id="step-2">
       <div class="setup-header">
-        <div class="setup-step-label">Step 2 of 5</div>
+        <div class="setup-step-label">Step 2 of 6</div>
         <div class="setup-title">When is your race?</div>
         <div class="setup-sub">The app will calculate your plan length and structure automatically.</div>
       </div>
@@ -331,7 +332,7 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
     <!-- STEP 3: Current Fitness -->
     <div class="setup-step" id="step-3">
       <div class="setup-header">
-        <div class="setup-step-label">Step 3 of 5</div>
+        <div class="setup-step-label">Step 3 of 6</div>
         <div class="setup-title">Your current fitness</div>
         <div class="setup-sub">Enter a recent race or training run. The app uses this to calculate your training paces.</div>
       </div>
@@ -371,13 +372,58 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
       </div>
     </div>
 
-    <!-- STEP 4: Preferred Days -->
+    <!-- STEP 4: Days Per Week -->
     <div class="setup-step" id="step-4">
       <div class="setup-header">
-        <div class="setup-step-label">Step 4 of 5</div>
+        <div class="setup-step-label">Step 4 of 6</div>
+        <div class="setup-title">How many days?</div>
+        <div class="setup-sub">How many days per week do you want to run? We'll recommend a number based on your race.</div>
+      </div>
+      <div id="days-recommendation" class="info-box" style="margin-bottom:20px"></div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:24px" id="days-count-selector">
+        <div class="days-count-btn" onclick="selectDayCount(1)" data-count="1" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">1</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">day</div>
+        </div>
+        <div class="days-count-btn" onclick="selectDayCount(2)" data-count="2" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">2</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
+        </div>
+        <div class="days-count-btn" onclick="selectDayCount(3)" data-count="3" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">3</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
+        </div>
+        <div class="days-count-btn" onclick="selectDayCount(4)" data-count="4" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">4</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
+        </div>
+        <div class="days-count-btn" onclick="selectDayCount(5)" data-count="5" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">5</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
+        </div>
+        <div class="days-count-btn" onclick="selectDayCount(6)" data-count="6" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">6</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
+        </div>
+        <div class="days-count-btn" onclick="selectDayCount(7)" data-count="7" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 4px;text-align:center;cursor:pointer;transition:all .2s">
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;color:var(--off-white)">7</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">days</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="goStep(3)">&#8592;</button>
+        <button class="btn-primary" onclick="goStep(6)" style="flex:1">Next &#8594;</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Preferred Days -->
+    <div class="setup-step" id="step-5">
+      <div class="setup-header">
+        <div class="setup-step-label">Step 5 of 6</div>
         <div class="setup-title">When do you run?</div>
         <div class="setup-sub">Select your preferred days. Tap to assign each run type. UESCA guidelines: never schedule quality the day before your long run.</div>
       </div>
+      <div id="days-count-legend" style="font-family:JetBrains Mono,monospace;font-size:11px;color:var(--accent2);letter-spacing:.5px;margin-bottom:14px"></div>
       <div class="day-legend">
         <div class="day-legend-item"><div class="day-legend-dot" style="background:var(--accent)"></div>Easy run</div>
         <div class="day-legend-item"><div class="day-legend-dot" style="background:var(--accent2)"></div>Quality</div>
@@ -401,14 +447,14 @@ input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(
       </div>
       <div class="btn-row">
         <button class="btn-back" onclick="goStep(3)">&#8592;</button>
-        <button class="btn-primary" onclick="goStep(5)" style="flex:1">Next &#8594;</button>
+        <button class="btn-primary" onclick="goStep(6)" style="flex:1">Next &#8594;</button>
       </div>
     </div>
 
     <!-- STEP 5: Confirm Paces -->
-    <div class="setup-step" id="step-5">
+    <div class="setup-step" id="step-6">
       <div class="setup-header">
-        <div class="setup-step-label">Step 5 of 5</div>
+        <div class="setup-step-label">Step 6 of 6</div>
         <div class="setup-title">Your training paces</div>
         <div class="setup-sub">Calculated from your recent result. You can adjust any of these - they'll be used throughout your plan.</div>
       </div>
@@ -595,11 +641,15 @@ function qualityType(weekIdx) {
 
 function generateSessions(weekData, weekIdx, paces, raceType, preferredDays, weekStartDate) {
   const { phase, recovery, totalKm } = weekData;
+  const numDays = preferredDays.length;
+
+  // Distribute volume based on number of days
   const longKm = Math.max(5, Math.round(totalKm * 0.30));
-  const qualKm = Math.max(4, Math.round(totalKm * 0.20));
-  const easy1Km = Math.max(3, Math.round(totalKm * 0.25));
-  const easy2Km = Math.max(3, totalKm - longKm - qualKm - easy1Km);
-  const qtype = (phase === 'taper' || recovery) ? 'easy' : qualityType(weekIdx);
+  const qualKm = numDays >= 2 ? Math.max(4, Math.round(totalKm * 0.20)) : 0;
+  const remainingKm = totalKm - longKm - qualKm;
+  const numEasy = Math.max(0, numDays - (qualKm > 0 ? 2 : 1));
+  const easyKmEach = numEasy > 0 ? Math.max(3, Math.round(remainingKm / numEasy)) : 0;
+  const qtype = (phase === 'taper' || recovery || numDays < 2) ? 'easy' : qualityType(weekIdx);
 
   function qualDesc(type, km) {
     if (type === 'easy') return 'Easy effort throughout. Relaxed form, conversational pace.';
@@ -658,7 +708,9 @@ function buildFullPlan(input) {
     const ws = new Date(planStart);
     ws.setDate(planStart.getDate() + wi * 7);
     const wsStr = ws.toISOString().split('T')[0];
-    const sessions = generateSessions(wd, wi, paces, raceType, preferredDays, wsStr);
+    // Ensure preferredDays matches daysPerWeek
+    const daysToUse = preferredDays.slice(0, input.daysPerWeek || preferredDays.length);
+    const sessions = generateSessions(wd, wi, paces, raceType, daysToUse, wsStr);
     return { weekNum: wi+1, weekStart: wsStr, ...wd, sessions };
   });
 
@@ -711,7 +763,7 @@ function refreshHome() {
 // SETUP WIZARD
 // ============================================================
 let currentStep = 1;
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 6;
 
 function renderDots() {
   const c = document.getElementById('progress-dots');
@@ -734,7 +786,9 @@ function goStep(n) {
   document.getElementById('step-' + n).classList.add('active');
   renderDots();
   if (n === 3) updateFitnessPreview();
-  if (n === 5) renderPaceConfirm();
+  if (n === 4) renderDaysRecommendation();
+  if (n === 5) { updateDayAssignmentForCount(setupData.daysPerWeek || 4); }
+  if (n === 6) renderPaceConfirm();
   window.scrollTo(0, 0);
 }
 
@@ -778,8 +832,17 @@ function validateStep(n) {
       if (diff === 1) return 'Avoid scheduling quality the day before your long run (UESCA guideline). Please adjust.';
     }
     // Map to ordered [easy1, quality, easy2, long]
-    const easyDays = sorted.filter(d => d.role === 'easy').map(d => d.dayIdx);
-    setupData.preferredDays = [easyDays[0], qualDay, easyDays[1] || easyDays[0]+2, longDay];
+    // Build preferredDays in role order
+    const roles = getDayRoles(setupData.daysPerWeek || 4);
+    setupData.preferredDays = roles.map(role => {
+      if (role === 'long') return longDay;
+      if (role === 'quality') return qualDay;
+      // For easy: take the next available easy day
+      const usedEasy = setupData.preferredDays ? setupData.preferredDays.filter((d,i) => roles[i] === 'easy') : [];
+      return sorted.find(d => d.role === 'easy' && !usedEasy.includes(d.dayIdx))?.dayIdx || 0;
+    });
+    // Simpler: just use sorted order
+    setupData.preferredDays = sorted.map(d => d.dayIdx);
   }
   return null;
 }
@@ -814,21 +877,39 @@ function updateFitnessPreview() {
 }
 
 // Day selector logic
+function getDayRoles(n) {
+  if (n === 1) return ['long'];
+  if (n === 2) return ['easy', 'long'];
+  if (n === 3) return ['easy', 'quality', 'long'];
+  if (n === 4) return ['easy', 'quality', 'easy', 'long'];
+  if (n === 5) return ['easy', 'quality', 'easy', 'easy', 'long'];
+  if (n === 6) return ['easy', 'easy', 'quality', 'easy', 'easy', 'long'];
+  return ['easy', 'easy', 'quality', 'easy', 'easy', 'easy', 'long'];
+}
 const DAY_ROLES = ['easy', 'quality', 'easy', 'long'];
 let dayRoleIdx = 0;
 
 function toggleDay(dayIdx) {
+  const n = setupData.daysPerWeek || 4;
+  const roles = getDayRoles(n);
   const existing = selectedDays.findIndex(d => d.dayIdx === dayIdx);
   if (existing >= 0) {
     selectedDays.splice(existing, 1);
-    dayRoleIdx = Math.max(0, dayRoleIdx - 1);
   } else {
-    if (selectedDays.length >= 4) { showToast("You have already selected 4 days"); return; }
-    const role = DAY_ROLES[selectedDays.length]; // assign in order
+    if (selectedDays.length >= n) { showToast("You have already selected " + n + " days"); return; }
+    // Check for duplicate day
+    if (selectedDays.some(d => d.dayIdx === dayIdx)) { showToast("That day is already selected"); return; }
+    const role = roles[selectedDays.length];
     selectedDays.push({ dayIdx, role });
   }
   renderDayButtons();
   checkDayConflict();
+}
+
+function updateDayAssignmentForCount(n) {
+  // Reset selected days when count changes
+  selectedDays = [];
+  renderDayButtons();
 }
 
 function renderDayButtons() {
@@ -912,7 +993,8 @@ function buildPlan() {
     easyPaceSec: setupData.easyPaceSec,
     startWeeklyKm: setupData.startWeeklyKm,
     preferredDays: setupData.preferredDays,
-    fitnessType: setupData.fitnessType
+    fitnessType: setupData.fitnessType,
+    daysPerWeek: setupData.daysPerWeek || 4
   });
 
   if (!plan) { showToast("Unable to build plan - check your inputs"); return; }
